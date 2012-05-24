@@ -39,7 +39,7 @@ test = (req, res) ->
     context =
         title : "testing"
 
-    res.render path.join(__dirname, "test/index.html")
+    res.render path.join(app_root, "test/index.html")
 
 # map the routes with the callback function
 app.get '/', index
