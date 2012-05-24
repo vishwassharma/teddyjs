@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Angelist Test Runner</title>
+<link rel="stylesheet" type="text/css" href="lib/jasmine-1.1.0/jasmine.css">
+</head>
+<body>
+
+<div id="jasmine-root"></div>
+
+<script src="lib/jasmine-1.1.0/jasmine.js"></script>
+<script src="lib/jasmine-1.1.0/jasmine-html.js"></script>
+<script src="lib/require.js"></script>
+<script>
+(function () {
+  require.config({
+      baseUrl: 'js/',
+
+      paths: {
+        jquery: '../lib/jquery'
+        , underscore: '../lib/underscore'
+        , backbone: '../lib/backbone'
+      },
+      waitSeconds: 1,
+     //For easier development, disable browser caching
+      urlArgs: 'bust=' +  (new Date()).getTime()
+  })
+
+  var reporter = new jasmine.TrivialReporter(document.getElementById('jasmine-root'));
+  var jasmineEnv = new jasmine.getEnv();
+  jasmineEnv.addReporter(reporter);
+  jasmineEnv.specFilter = reporter.specFilter.bind(reporter);
+
+  /*
+  var specs = [
+    'mediator'
+    , 'router'
+    , 'application'
+    , 'layout'
+    , 'collection_view'
+    , 'model'
+    , 'collection'
+    , 'controller'
+    , 'view'
+    ];
+    */
+  var specs = [
+  ];
+  for (var i = 0, l = specs.length; i < l; i++) {
+    specs[i] = specs[i] + '_spec';
+  }
+  require(specs, function () {
+    jasmineEnv.execute();
+  });
+
+})();
+</script>
+
+</body>
+</html>

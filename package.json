@@ -1,0 +1,10 @@
+{
+    "name" : "angle", 
+    "version" : "0.0.1",
+    "description" : "A supervisor program for running nodejs programs", 
+    "author" : "Vishwas Sharma", 
+    "dependencies": {
+      "express": "2.5.8",
+      "jade" : "0.26.0"
+  }
+}
